@@ -3,4 +3,24 @@ body{
     background-repeat: no-repeat;
     background-size: cover;
     height: 100vh;
+    color: white;
+}
+.container-fluid{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+h1{
+    font-size: 55px;
+    font-weight: bold;
+    color: #daa520;
+}
+#phrase{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+button{
+    background-color: #daa520;
+    color: #085426!important;
+    font-weight: bold;
+    width: 175px;
 }
