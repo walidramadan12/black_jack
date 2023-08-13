@@ -9,21 +9,33 @@ let nameEl = document.getElementById("name")
 const blackjack =[1,2,3,4,5,6,7,8,9,10,11,12,13]
 
 let given = 200
+let win = 21
 
 document.title=("Blackjack")
 
+        let card01 = Math.floor(Math.random(blackjack)*blackjack.length)
+        let card02 = Math.floor(Math.random(blackjack)*blackjack.length)
+        let card03 = Math.floor(Math.random(blackjack)*blackjack.length)
+
 
 startGameBtn.addEventListener("click",function(){
-    
 
-    let card01 = Math.floor(Math.random(blackjack)*blackjack.length)
-    let card02 = Math.floor(Math.random(blackjack)*blackjack.length)
     cardsEl.innerHTML=` Cards: ${blackjack[card01]} ${blackjack[card02]} `
     phraseEl.innerHTML=`Want to start a new game?`
     let sum = blackjack[card01] + blackjack[card02]
     sumEl.innerHTML = `Sum: ${sum}`
     nameEl.innerHTML = `Walid:$ ${given-50}`
    
+    if(sum>=win){
+        phraseEl.innerHTML=`You won!`
+    }
+    return
+})
+
+newCardBtn.addEventListener("click",function(){
+        
+
+    
 })
 
 resetBtn.addEventListener("click",function(){
@@ -31,10 +43,4 @@ resetBtn.addEventListener("click",function(){
     phraseEl.innerHTML=`Want to play around?`
     sumEl.innerHTML = `Sum: `
     nameEl.innerHTML = `Walid:$ ${given}`
-})
-
-newCardBtn.addEventListener("click",function(){
-    if(sum<21){
-        
-    }
 })
