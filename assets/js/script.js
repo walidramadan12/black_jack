@@ -78,8 +78,13 @@ let nameEl = document.getElementById("name")
 
 const blackjack =[1,2,3,4,5,6,7,8,9,10,11,12,13]
  let startGame = false
- let x;
+ let x=[]
  let given =200
+ document.title=("Blackjack")
+ let cards01 = Math.floor(Math.random(blackjack)*blackjack.length)
+ let cards02 = Math.floor(Math.random(blackjack)*blackjack.length)
+ let anyCard = Math.floor(Math.random(blackjack)*blackjack.length)
+ let sumAll = cards01+cards02+anyCard
 
  startGameBtn.addEventListener("click",function(){
 
@@ -89,10 +94,29 @@ const blackjack =[1,2,3,4,5,6,7,8,9,10,11,12,13]
     resetBtn.disabled=false
     phraseEl.innerHTML=`Want to start a new game?`
 
-    let cards01 = Math.floor(Math.random(blackjack)*blackjack.length)
-    let cards02 = Math.floor(Math.random(blackjack)*blackjack.length)
+   //  let cards01 = Math.floor(Math.random(blackjack)*blackjack.length)
+   //  let cards02 = Math.floor(Math.random(blackjack)*blackjack.length)
     cardsEl.innerHTML=`Cards: ${cards01} ${cards02}`
     sumEl.innerHTML=`Sum: ${cards01+cards02}`
     nameEl.innerHTML=`Walid:$ ${given-50} `
-    // x.push(cards)
+   //  x.push(cards)
+    
+ })
+ 
+ newCardBtn.addEventListener("click",function(){
+   if(startGame){
+      // let anyCard = Math.floor(Math.random(blackjack)*blackjack.length)
+      
+      x.push(blackjack[anyCard])
+      cardsEl.innerHTML=`Cards: ${blackjack[anyCard]}`
+      sumEl.innerHTML=`Sum: ${sumAll}`
+   }
+ })
+ resetBtn.addEventListener("click",function(){
+   startGame=false
+   startGameBtn.disabled=false
+   newCardBtn.disabled=true
+   resetBtn.disabled=true
+   phraseEl.innerHTML=`Want to start a new game?`
+
  })
