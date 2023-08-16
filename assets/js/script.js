@@ -80,43 +80,58 @@ const blackjack =[1,2,3,4,5,6,7,8,9,10,11,12,13]
  let startGame = false
  let x=[]
  let given =200
+
+//  counter = 0
  document.title=("Blackjack")
- let cards01 = Math.floor(Math.random(blackjack)*blackjack.length)
- let cards02 = Math.floor(Math.random(blackjack)*blackjack.length)
- let anyCard = Math.floor(Math.random(blackjack)*blackjack.length)
- let sumAll = cards01+cards02+anyCard
 
  startGameBtn.addEventListener("click",function(){
 
+  3
+   
     startGame=true
     startGameBtn.disabled=true
     newCardBtn.disabled=false
     resetBtn.disabled=false
+    x=[]
     phraseEl.innerHTML=`Want to start a new game?`
-
-   //  let cards01 = Math.floor(Math.random(blackjack)*blackjack.length)
-   //  let cards02 = Math.floor(Math.random(blackjack)*blackjack.length)
+    let cards01 = Math.floor(Math.random(blackjack)*blackjack.length)
+    let cards02 = Math.floor(Math.random(blackjack)*blackjack.length)
+    let sumAll = cards01+cards02
     cardsEl.innerHTML=`Cards: ${cards01} ${cards02}`
-    sumEl.innerHTML=`Sum: ${cards01+cards02}`
+    sumEl.innerHTML=`Sum: ${sumAll}`
     nameEl.innerHTML=`Walid:$ ${given-50} `
-   //  x.push(cards)
+    if(sumAll==21 || sumAll>21){
+      phraseEl.innerHTML=`COngrats !`
+    }else if(sumAll<21){
+      phraseEl.innerHTML=`Wanna add a new card?`
+    }
+   
     
  })
  
  newCardBtn.addEventListener("click",function(){
-   if(startGame){
-      // let anyCard = Math.floor(Math.random(blackjack)*blackjack.length)
-      
-      x.push(blackjack[anyCard])
-      cardsEl.innerHTML=`Cards: ${blackjack[anyCard]}`
+  let anyCard = Math.floor(Math.random(blackjack)*blackjack.length)  
+  
+   if(sumAll<21){
+
+    sumAll += anyCard
+
+     
+      cardsEl.innerHTML+=`Cards: ${anyCard}`
       sumEl.innerHTML=`Sum: ${sumAll}`
+      
    }
  })
  resetBtn.addEventListener("click",function(){
-   startGame=false
+   
    startGameBtn.disabled=false
    newCardBtn.disabled=true
    resetBtn.disabled=true
+   x=[]
+
    phraseEl.innerHTML=`Want to start a new game?`
+   cardsEl.innerHTML=`Cards:`
+   sumEl.innerHTML=`Sum: `
+   nameEl.innerHTML=`Walid:$ ${given} `
 
  })
